@@ -1,0 +1,41 @@
+ul.main-menu a{
+    text-decoration: none;
+}
+ ul.main-menu a.selected{
+    color: #f00;
+}
+ul.main-menu ul{
+ display: none;
+}
+ul.main-menu ul.open{
+    display: block;
+    animation: move 0.5s;
+ }
+ ul + a::after{
+    font-family: 'Font Awesome 5 Free';
+    font-weight: bold;
+    content: '\f107';
+    margin-left: 4px;
+}
+ul + a.selected::after{
+    font-family: 'Font Awesome 5 Free'; 
+    font-weight: bold;
+    content: '\f0da';
+    margin-left: 4px;
+
+}
+ ul.main-menu li{
+    display: flex;
+    flex-direction: column-reverse;
+}
+@keyframes move {
+    from {
+      transform: translateX(-50px);    
+    }
+    50%{
+        transform: translateX(10px);   
+    }
+    to{
+        transform: translateX(0px);   
+    }
+  }
