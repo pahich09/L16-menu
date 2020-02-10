@@ -8,7 +8,6 @@ const ul = document.querySelectorAll('ul.main-menu ul');
   [...ul].map(el => el.classList.remove('open'));
 
   const openParentsUl = () => {
-    console.log(event);
     [].map.call((event.composedPath()).filter(el => el.tagName === 'UL').filter(el => el.matches('.main-menu ul')), el => {
       el.classList.add('open');
       el.nextElementSibling.classList.add('selected');
