@@ -7,15 +7,11 @@ const ul = document.querySelectorAll('ul.main-menu ul');
   event.preventDefault();
   [...ul].map(el => el.classList.remove('open'));
 
-  const openParent = curEventTarget => {
-    let parent = curEventTarget.parentElement.parentElement;
-    if (parent.classList.contains('main-menu')) {
-      return;
-    } else {
-      parent.classList.add('open');
-      parent.nextElementSibling.classList.add('selected');
-      openParent(parent)
-    }
+  const openParentsUl = () => {
+    [].map.call((event.composedPath()).filter(el => el.tagName === 'UL').filter(el => el.matches('.main-menu ul')), el => {
+      el.classList.add('open');
+      el.nextElementSibling.classList.add('selected');
+    })
   }
   if (event.target.classList.contains('selected')) {
     event.target.previousElementSibling ? event.target.classList.remove('selected') : null;
@@ -24,5 +20,5 @@ const ul = document.querySelectorAll('ul.main-menu ul');
     event.target.classList.add('selected');
     event.target.previousElementSibling ? event.target.previousElementSibling.classList.add('open') : null;
   }
-  openParent(event.target);
+  openParentsUl();
 }))
